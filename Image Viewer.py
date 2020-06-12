@@ -1,9 +1,20 @@
 import tkinter
+import os
 from PIL import ImageTk,Image #adds pillow which supports current image types
 
 root = tkinter.Tk()
 root.title('Image Viewer')
 #root.iconbitmap('Image Viewer.ico')
+
+img_location=[]
+for filename in os.listdir("images"):
+    img_location.append("images/" + filename)
+
+img_list=[]
+for img in img_location:
+    my_img = ImageTk.PhotoImage(Image.open(img))
+    img_list.append(my_img)
+print(img_list)
 
 def rbutton_click():
     global view_index,my_label
@@ -25,13 +36,6 @@ def lbutton_click():
     my_label = tkinter.Label(root,image=img_list[view_index])
     my_label.grid(row=0, column=0, columnspan=3)
 
-    
-my_img1 = ImageTk.PhotoImage(Image.open("images/mario.png"))
-my_img2 = ImageTk.PhotoImage(Image.open("images/luigi.png"))
-my_img3 = ImageTk.PhotoImage(Image.open("images/peach.png"))
-my_img4 = ImageTk.PhotoImage(Image.open("images/yoshi.png"))
-my_img5 = ImageTk.PhotoImage(Image.open("images/bowser.jpg"))
-img_list = [my_img1,my_img2,my_img3,my_img4,my_img5]
 
 view_index = 0
 my_label = tkinter.Label(root,image=img_list[view_index])
