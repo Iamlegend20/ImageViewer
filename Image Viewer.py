@@ -4,7 +4,7 @@ from PIL import ImageTk,Image #adds pillow which supports current image types
 
 root = tkinter.Tk()
 root.title('Image Viewer')
-#root.iconbitmap('Image Viewer.ico')
+root.iconbitmap('image viewer.ico')
 
 img_location=[]
 for filename in os.listdir("images"):
@@ -14,7 +14,6 @@ img_list=[]
 for img in img_location:
     my_img = ImageTk.PhotoImage(Image.open(img))
     img_list.append(my_img)
-print(img_list)
 
 def rbutton_click():
     global view_index,my_label
